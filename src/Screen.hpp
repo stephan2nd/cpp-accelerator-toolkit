@@ -49,6 +49,12 @@ private:
 	void
 	fillHistogram(double x, double y);
 	
+	string
+	asciiRepresentation(unsigned int number, unsigned int x_factor, unsigned int y_factor) const;
+	
+	unsigned int
+	maxPixelValue(void) const;
+	
 	unsigned int m_dots_per_meter;
 
 	vector<atomic<unsigned int>> m_pixel;
