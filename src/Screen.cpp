@@ -94,14 +94,18 @@ Screen::exportHistogram(const string& filename) const
 	ofstream outfile;
 	outfile.open(filename, ios::out | ios::trunc );
 	
-	unsigned int cells_hor = m_dots_per_meter * m_width;
+	unsigned int dots_hor = m_dots_per_meter * m_width;
+	unsigned int dots_ver = m_dots_per_meter * m_height;
 	unsigned int x = 0;
 	unsigned int y = 0;
-	outfile << cells_hor << "\n";
+	
+	outfile << dots_hor << "\n";
+	outfile << dots_ver << "\n";	
+	
 	for( auto it = m_pixel.begin(); it<m_pixel.end(); it++ ){
 		outfile << x << "," << y << "," << *it << "\n";
 		x++;
-		if( x == cells_hor ){ 
+		if( x == dots_hor ){ 
 			x = 0;
 			y++;
 		} 
@@ -120,12 +124,11 @@ Screen::exportHistogram(void) const
 
 
 
-// @TODO optimize
 void
 Screen::fillHistogram(double x, double y)
 {
-	double half_width  = 0.5*m_width;
-	double half_height = 0.5*m_height;
+	double half_width  = 0.5 * m_width;
+	double half_height = 0.5 * m_height;
 	unsigned int dots_hor = m_dots_per_meter * m_width;
 	unsigned int dots_ver = m_dots_per_meter * m_height;
 		
@@ -134,8 +137,9 @@ Screen::fillHistogram(double x, double y)
 		 y < half_height and
 		 y > -half_height){
 		
-		double x_ = floor((x*m_dots_per_meter) + 0.5*dots_hor);
-		double y_ = floor((y*m_dots_per_meter) + 0.5*dots_ver);			
+		double x_ = round((x * m_dots_per_meter) + 0.5 * dots_hor);
+		double y_ = round((y * m_dots_per_meter) + 0.5 * dots_ver);		
+			
 		unsigned int pos = dots_hor * y_ + x_;
 		
 		m_pixel[pos] += 1;
