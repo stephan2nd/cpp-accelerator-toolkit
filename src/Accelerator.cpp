@@ -1,6 +1,7 @@
 #include "Accelerator.hpp"
 
 #include <sstream>
+#include <exception>
 
 
 
@@ -98,8 +99,8 @@ Accelerator::startSimulation(unsigned int nof_ions, bool threaded, unsigned int 
 		for( unsigned int i=0; i<nof_threads; i++ ){
 			try{
 				threadlist[i] = thread(&IonSource::run, m_ion_source, ions_per_core);
-			} catch(...) {
-				cout << "Error in " << __FILE__ << " line " << __LINE__ << " thread limit exceeded with " << nof_threads << " threads" << endl;
+			} catch(exception &e) {
+				cout << "Error in " << __FILE__ << " line " << __LINE__ << " " << e.what() << endl;
 				exit(0);
 			}
 		}

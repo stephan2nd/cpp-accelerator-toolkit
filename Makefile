@@ -15,7 +15,7 @@ CPP_FILES := $(filter-out src/main.cpp, $(CPP_FILES))
 CPP_FILES := $(filter-out src/test.cpp, $(CPP_FILES))
 OBJ_FILES := $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 LD_FLAGS := 
-CC_FLAGS := -Wall -std=c++11 -pedantic -O3 # -g (for debugging)
+CC_FLAGS := -Wall -std=c++11 -pedantic -O3 -pthread # -g (for debugging)
 
 MAIN_OBJ := obj/main.o
 TEST_OBJ := obj/test.o
@@ -26,7 +26,7 @@ all: lib main test
 	@echo "done"
 	
 lib: $(OBJ_FILES)
-	$(LL) rvs $(LIB_NAME) $^
+	$(LL) rvs $(CCFLAGS) $(LIB_NAME) $^
 
 main: $(OBJ_FILES) $(MAIN_OBJ)
 	$(CC) $(LD_FLAGS) -o $@ $^
