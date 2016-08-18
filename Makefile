@@ -20,7 +20,7 @@ CC_FLAGS := -Wall -std=c++11 -pedantic -O3 # -g (for debugging)
 MAIN_OBJ := obj/main.o
 TEST_OBJ := obj/test.o
 
-LIB_NAME := lib/accelerator-toolkit.a
+LIB_NAME := lib/libacctool.a
 
 all: lib main test
 	@echo "done"

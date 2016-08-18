@@ -99,7 +99,7 @@ Accelerator::startSimulation(unsigned int nof_ions, bool threaded, unsigned int 
 			try{
 				threadlist[i] = thread(&IonSource::run, m_ion_source, ions_per_core);
 			} catch(...) {
-				cout << "THREAD LIMIT exceeded" << endl;
+				cout << "Error in " << __FILE__ << " line " << __LINE__ << " thread limit exceeded with " << nof_threads << " threads" << endl;
 				exit(0);
 			}
 		}
