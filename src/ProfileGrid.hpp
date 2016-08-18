@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <atomic>
 
 #include "Device.hpp"
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <atomic>
 
 #include "Device.hpp"
 

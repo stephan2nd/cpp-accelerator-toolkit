@@ -1,7 +1,7 @@
 # Makefile for accelerator-toolkit
 
-CC := llvm-g++
-LL := llvm-ar-mp-3.7
+CC := g++ #llvm-g++
+LL := ar #llvm-ar-mp-3.7
 CPP_FILES := $(wildcard src/*.cpp)
 CPP_FILES := $(filter-out src/main.cpp, $(CPP_FILES))
 OBJ_FILES := $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))

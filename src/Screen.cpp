@@ -95,8 +95,8 @@ Screen::exportHistogram(const string& filename) const
 	outfile.open(filename, ios::out | ios::trunc );
 	
 	unsigned int cells_hor = m_dots_per_meter * m_width;
-	int x = 0;
-	int y = 0;
+	unsigned int x = 0;
+	unsigned int y = 0;
 	outfile << cells_hor << "\n";
 	for( auto it = m_pixel.begin(); it<m_pixel.end(); it++ ){
 		outfile << x << "," << y << "," << *it << "\n";
