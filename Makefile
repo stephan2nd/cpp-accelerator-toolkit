@@ -22,7 +22,7 @@ TEST_OBJ := obj/test.o
 
 LIB_NAME := lib/accelerator-toolkit.a
 
-all: lib
+all: lib main test
 	@echo "done"
 	
 lib: $(OBJ_FILES)
