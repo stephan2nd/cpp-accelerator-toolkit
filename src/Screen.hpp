@@ -18,7 +18,7 @@ friend unsigned int test_screen(bool verbose);
 
 public:
 
-	Screen(const string& name, double width, double height, double dots_per_meter = 1000.);
+	Screen(const string& name, double width, double height, unsigned int dots_per_meter = 1000);
 
 	virtual
 	~Screen();
@@ -49,7 +49,7 @@ private:
 	void
 	fillHistogram(double x, double y);
 	
-	double m_dots_per_meter;
+	unsigned int m_dots_per_meter;
 
 	vector<atomic<unsigned int>> m_pixel;
 	

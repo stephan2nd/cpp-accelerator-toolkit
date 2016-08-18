@@ -6,7 +6,7 @@
 
 
 
-Screen::Screen(const string& name, double width, double height, double dots_per_meter) :
+Screen::Screen(const string& name, double width, double height, unsigned int dots_per_meter) :
 	Device(name, width, height, 0),
 	m_dots_per_meter(dots_per_meter),
 	m_pixel(ceil(dots_per_meter*dots_per_meter*width*height)),
