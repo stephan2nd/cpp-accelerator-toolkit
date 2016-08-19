@@ -60,6 +60,8 @@ private:
 	vector<atomic<unsigned int>> m_pixel;
 	
 	atomic<unsigned int> m_missed;
+	
+	atomic<unsigned int> m_counts;		
 };
 
 #endif /* SCREEN_HPP_ */

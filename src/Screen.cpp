@@ -9,8 +9,9 @@
 Screen::Screen(const string& name, double width, double height, unsigned int dots_per_meter) :
 	Device(name, width, height, 0),
 	m_dots_per_meter(dots_per_meter),
-	m_pixel(ceil(dots_per_meter*dots_per_meter*width*height)),
-	m_missed(0)
+	m_pixel(ceil(dots_per_meter * dots_per_meter * width * height)),
+	m_missed(0),
+	m_counts(0)
 { }
 
 
@@ -33,7 +34,8 @@ Screen::toString(unsigned int indent) const
 	   << "width = " << m_width << " m, "
 	   << "height = " << m_height << " m, "
 	   << "dots_per_meter = " << m_dots_per_meter << ", "
-	   << "missed = " << m_missed  
+	   << "missed = " << m_missed << ", "
+	   << "counts = " << m_counts 
 	   << ") {\n";
 	
 	unsigned int cells_hor = m_dots_per_meter * m_width;
@@ -93,6 +95,7 @@ Screen::reset(void)
 { 
 	fill(m_pixel.begin(), m_pixel.end(), 0);
 	m_missed = 0;
+	m_counts = 0;
 }
 
 
@@ -146,12 +149,15 @@ Screen::fillHistogram(double x, double y)
 		 y < half_height and
 		 y > -half_height){
 		
-		double x_ = round((x * m_dots_per_meter) + 0.5 * dots_hor);
-		double y_ = round((y * m_dots_per_meter) + 0.5 * dots_ver);		
+		unsigned int x_ = round((x * m_dots_per_meter) + 0.5 * dots_hor);
+		unsigned int y_ = round((y * m_dots_per_meter) + 0.5 * dots_ver);		
 			
 		unsigned int pos = dots_hor * y_ + x_;
 		
-		m_pixel[pos] += 1;
+		if( pos < m_pixel.size() ){
+			m_pixel.at(pos) += 1;
+			m_counts ++;
+		}
 	} else {
 		m_missed += 1;
 	}
