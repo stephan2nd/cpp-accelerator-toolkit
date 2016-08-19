@@ -99,7 +99,7 @@ unsigned int test_ion(bool verbose)
 	Screen sc1("Sc1",0.2,0.2,100);
 	Screen sc2("Sc2",0.2,0.2,100);	
 	ProfileGrid pg1("Pg1",0.2,0.2,20);
-	Slit slit("",0.02,0.02,0.02,0.02);
+	Slit slit("",-0.02,0.02,-0.02,0.02);
 	HKick hk("",-0.04);
 	
 	Accelerator acc;

@@ -26,13 +26,13 @@ all: lib main test
 	@echo "done"
 	
 lib: $(OBJ_FILES)
-	$(LL) rvs $(CCFLAGS) $(LIB_NAME) $^
+	$(LL) rvs $(LIB_NAME) $^
 
 main: $(OBJ_FILES) $(MAIN_OBJ)
-	$(CC) $(LD_FLAGS) -o $@ $^
+	$(CC) $(CC_FLAGS) $(LD_FLAGS) -o $@ $^
 
 test: $(OBJ_FILES) $(TEST_OBJ)
-	$(CC) $(LD_FLAGS) -o $@ $^
+	$(CC) $(CC_FLAGS) $(LD_FLAGS) -o $@ $^
 
 obj/%.o: src/%.cpp src/%.hpp
 	$(CC) $(CC_FLAGS) -c -o $@ $<
