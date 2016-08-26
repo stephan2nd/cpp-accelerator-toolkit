@@ -13,7 +13,14 @@ Accelerator::Accelerator() :
 
 
 Accelerator::~Accelerator()
-{ }
+{ 
+	for( auto it=m_devices.begin(); it<m_devices.end(); it++ ){
+		if( (*it) != NULL ){
+			delete (*it);
+			(*it) = NULL;
+		}
+	}	
+}
 
 
 
@@ -79,13 +86,6 @@ Accelerator::getDeviceByName(const string& name)
 void
 Accelerator::startSimulation(unsigned int nof_ions, bool threaded, unsigned int nof_threads)
 {
-	if (threaded){
-		//cout << "start simulation with " << nof_ions << " ions in " << nof_threads << " threads" << endl;
-	} else {
-		//cout << "start simulation with " << nof_ions << " ions in 1 thread" << endl;
-	}
-	
-	
 	for( auto it_device=m_devices.begin(); it_device<m_devices.end(); it_device++ ){
 		(*it_device)->reset();
 	}
@@ -140,6 +140,20 @@ Accelerator::settingSize(void)
 	}
 	return settingSize;
 }
+
+
+
+void
+Accelerator::setScreenIgnore(bool ignore)
+{
+	for( auto it=m_devices.begin(); it<m_devices.end(); it++ ){
+		if( (*it)->getClassName() == "Screen" ){
+			(*it)->setIgnore(ignore);
+		}
+	}
+}
+
+
 
 
 

@@ -5,11 +5,13 @@
 
 
 
-Device::Device(const string& name, double width, double height, double length) :
+Device::Device(const string& class_name, const string& name, double width, double height, double length) :
+	m_class_name(class_name),
 	m_name(name),
 	m_width(width),
 	m_height(height),
 	m_length(length),
+	m_ignore(false),
 	m_previous(NULL),
 	m_next(NULL)
 { }

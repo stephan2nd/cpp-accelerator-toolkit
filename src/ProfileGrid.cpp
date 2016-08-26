@@ -6,7 +6,7 @@
 
 
 ProfileGrid::ProfileGrid(const string& name, double width, double height, unsigned int  nof_wires) :
-	Device(name, width, height, 0),
+	Device("ProfileGrid", name, width, height, 0),
 	m_wires_hor(nof_wires),
 	m_wires_ver(nof_wires)
 { }

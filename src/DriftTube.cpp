@@ -5,7 +5,7 @@
 
 
 DriftTube::DriftTube(const string& name, double width, double height, double length) :
-	Device(name, width, height, length)
+	Device("DriftTube", name, width, height, length)
 { }
 
 

@@ -5,7 +5,7 @@
 
 
 DipoleMagnet::DipoleMagnet(const string& name, double width, double height, double length, double angle) :
-	Device(name, width, height, length),
+	Device("DipoleMagnet", name, width, height, length),
 	m_angle(angle)
 { }
 

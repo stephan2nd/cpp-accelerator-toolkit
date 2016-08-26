@@ -5,7 +5,7 @@
 
 
 Slit::Slit(const string& name, double pos_left, double pos_right , double pos_bottom, double pos_top) :
-	Device(name, 0, 0, 0),
+	Device("Slit", name, 0, 0, 0),
 	m_pos_left(pos_left),	
 	m_pos_right(pos_right),	
 	m_pos_top(pos_top),

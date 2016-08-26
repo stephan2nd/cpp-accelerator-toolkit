@@ -5,14 +5,14 @@
 
 
 HKick::HKick(const string& name, double angle) :
-	Device(name, 0, 0, 0),
+	Device("HKick", name, 0, 0, 0),
 	m_angle(angle)
 { }
 
 	
 
 HKick::HKick(const string& name, double min_angle, double max_angle) :
-	Device(name, 0, 0, 0),
+	Device("HKick", name, 0, 0, 0),
 	m_angle(0),
 	m_min_angle(min_angle),
 	m_max_angle(max_angle)

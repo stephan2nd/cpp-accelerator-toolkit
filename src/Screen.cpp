@@ -7,7 +7,7 @@
 
 
 Screen::Screen(const string& name, double width, double height, unsigned int dots_per_meter) :
-	Device(name, width, height, 0),
+	Device("Screen", name, width, height, 0),
 	m_dots_per_meter(dots_per_meter),
 	m_pixel(ceil(dots_per_meter * dots_per_meter * width * height)),
 	m_missed(0),
@@ -82,7 +82,10 @@ operator<<(ostream& os, const Screen& screen)
 void
 Screen::transport(Ion& ion)
 {
-	fillHistogram(ion.x(),ion.y());
+	if( !m_ignore ){
+		fillHistogram(ion.x(),ion.y());
+	}
+	
 	if( m_next != NULL ){
 		m_next->transport(ion);
 	}

@@ -14,7 +14,7 @@ class Device
 {
 public:
 
-	Device(const string& name, double width, double height, double length=0.);
+	Device(const string& class_name, const string& name, double width, double height, double length=0.);
 
 	virtual
 	~Device();
@@ -50,8 +50,14 @@ public:
 	inline Device* getNextDevice(void) { return m_next; }
 	
 	inline string getName(void) { return m_name; }
+	
+	inline void setIgnore(bool ignore) { m_ignore = ignore; }
+	
+	inline string getClassName(void) { return m_class_name; }
 
 protected:
+
+	string m_class_name;
 
 	string m_name;
 
@@ -60,6 +66,8 @@ protected:
 	double m_height;
 	
 	double m_length;
+	
+	bool m_ignore;
 	
 	Device* m_previous;
 	

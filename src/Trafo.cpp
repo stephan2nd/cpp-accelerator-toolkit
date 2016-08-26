@@ -5,7 +5,7 @@
 
 
 Trafo::Trafo(const string& name) :
-	Device(name, 0, 0, 0),
+	Device("Trafo", name, 0, 0, 0),
 	m_counts(0)
 { }
 

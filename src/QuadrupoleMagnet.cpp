@@ -6,14 +6,14 @@
 
 
 QuadrupoleMagnet::QuadrupoleMagnet(const string& name, double width, double height, double length, double strength) :
-	Device(name, width, height, length),
+	Device("QuadrupoleMagnet", name, width, height, length),
 	m_strength(strength)
 { }
 
 
 
 QuadrupoleMagnet::QuadrupoleMagnet(const string& name, double width, double height, double length, double min_strength, double max_strength) :
-	Device(name, width, height, length),
+	Device("QuadrupoleMagnet", name, width, height, length),
 	m_strength(0),
 	m_min_strength(min_strength),
 	m_max_strength(max_strength)

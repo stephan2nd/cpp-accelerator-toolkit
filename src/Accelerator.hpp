@@ -48,6 +48,9 @@ public:
 	
 	int
 	settingSize(void);
+	
+	void
+	setScreenIgnore(bool ignore);
 
 private:
 
