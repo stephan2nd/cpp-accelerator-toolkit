@@ -24,7 +24,7 @@ Dummy::toString(unsigned int indent) const
 	
 	stringstream ss;
 	ss << indention << toLine() << " ("
-	   << "nomenclature = " << m_nomenclature << ", "
+	   << "name = " << m_name << ", "
 	   << "width = " << m_width << " m, "
 	   << "height = " << m_height << " m, "
 	   << "length = " << m_length << " m" 
@@ -37,7 +37,7 @@ Dummy::toString(unsigned int indent) const
 string
 Dummy::toLine(void) const
 {
-	return m_nomenclature==""?"Dummy":m_nomenclature;
+	return m_name==""?"Dummy":m_name;
 }
 	
 
