@@ -78,7 +78,8 @@ Accelerator::getDeviceByName(const string& name)
 			return *it;
 		}
 	}
-	return NULL;
+	cout << "Error in " << __FILE__ << " line " << __LINE__ << " no device with name " << name << " found" << endl;
+	exit(0);
 }
 
 
