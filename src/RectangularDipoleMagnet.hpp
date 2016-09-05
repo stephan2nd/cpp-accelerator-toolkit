@@ -30,6 +30,12 @@ public:
 	friend ostream&
 	operator<<(ostream& os, const RectangularDipoleMagnet& rectangularDipoleMagnet);
 
+	void
+	transport(Ion& ion);
+	
+	void
+	reset(void);
+	
 private:
 
 	double m_angle;

@@ -39,7 +39,8 @@ QuadrupoleMagnet::toString(unsigned int indent) const
 	   << "width = " << m_width << " m, "
 	   << "height = " << m_height << " m, "
 	   << "length = " << m_length << " m, "
-	   << "strength = " << m_strength
+	   << "strength = " << m_strength << " 1/m^2, "
+	   << "mirko_strength = " << (m_strength/abs(m_strength))*sqrt(abs(m_strength))/1000. << " 1/mm"
 	   << ")";
 	return ss.str();
 }
@@ -73,15 +74,23 @@ QuadrupoleMagnet::transport(Ion& ion)
 	double sinhomega = sinh(omega);
 	
 	if( m_strength<0 ){
-		ion.setX( cosomega*ion.x() + (sinomega/sqrts)*ion.dx() );
-		ion.setDx( -sinomega*sqrts*ion.x() + cosomega*ion.dx() );
-		ion.setY( coshomega*ion.y() + (sinhomega/sqrts)*ion.dy() );
-		ion.setDy( sinhomega*sqrts*ion.y() + coshomega*ion.dy() );
+		double x = cosomega*ion.x() + (sinomega/sqrts)*ion.dx();
+		double dx = -sinomega*sqrts*ion.x() + cosomega*ion.dx();
+		double y = coshomega*ion.y() + (sinhomega/sqrts)*ion.dy();
+		double dy = sinhomega*sqrts*ion.y() + coshomega*ion.dy();
+		ion.setX( x );
+		ion.setDx( dx );
+		ion.setY( y );
+		ion.setDy( dy );
 	} else if( m_strength>0 ){
-		ion.setX( coshomega*ion.x() + (sinhomega/sqrts)*ion.dx() );
-		ion.setDx( sinhomega*sqrts*ion.x() + coshomega*ion.dx() );	
-		ion.setY( cosomega*ion.y() + (sinomega/sqrts)*ion.dy() );
-		ion.setDy( -sinomega*sqrts*ion.y() + cosomega*ion.dy() );
+		double x = coshomega*ion.x() + (sinhomega/sqrts)*ion.dx();
+		double dx = sinhomega*sqrts*ion.x() + coshomega*ion.dx();
+		double y = cosomega*ion.y() + (sinomega/sqrts)*ion.dy();
+		double dy = -sinomega*sqrts*ion.y() + cosomega*ion.dy();
+		ion.setX( x );
+		ion.setDx( dx );
+		ion.setY( y );
+		ion.setDy( dy );
 	} else {
 		ion.setX( m_length * ion.dx() );
 		ion.setY( m_length * ion.dy() );	

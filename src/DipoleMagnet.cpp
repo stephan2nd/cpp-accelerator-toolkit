@@ -62,10 +62,14 @@ DipoleMagnet::transport(Ion& ion)
 		double cosangle = cos(m_angle);
 		double sinangle = sin(m_angle);
 			
-		ion.setX( cosangle*ion.x() + r*sinangle*ion.dx() + r*(1.-cosangle)*ion.dp() );			
-		ion.setDx( -(1/r)*sinangle*ion.x() +  cosangle*ion.dx() + sinangle*ion.dp() );	
-		ion.setY( ion.y()+m_length*ion.dy() );
-		ion.setDl( -sinangle*ion.x() - r*(1.-cosangle)*ion.dx() - r*(m_length-r*sinangle)*ion.dp() );
+		double x = cosangle*ion.x() + r*sinangle*ion.dx() + r*(1.-cosangle)*ion.dp();
+		double dx = -(1/r)*sinangle*ion.x() +  cosangle*ion.dx() + sinangle*ion.dp();
+		double y = ion.y()+m_length*ion.dy();
+		double dl = -sinangle*ion.x() - r*(1.-cosangle)*ion.dx() - r*(m_length-r*sinangle)*ion.dp();	
+		ion.setX( x );			
+		ion.setDx( dx );	
+		ion.setY( y );
+		ion.setDl( dl );
 
 	} else {
 		ion.setX( ion.x()+m_length * ion.dx() );
