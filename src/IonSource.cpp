@@ -13,13 +13,13 @@ IonSource::IonSource() :
 	m_charge(2),
 	m_energy(1000),
 	m_mu_x(0.),
-	m_sigma_x(0.02),
-	m_mu_dx(0.005),
-	m_sigma_dx(0.01),
+	m_sigma_x(0.001),
+	m_mu_dx(0.000),
+	m_sigma_dx(0.0015),
 	m_mu_y(0.),
-	m_sigma_y(0.02),
+	m_sigma_y(0.001),
 	m_mu_dy(0.),
-	m_sigma_dy(0.01),
+	m_sigma_dy(0.002),
 	m_mu_dl(0.),
 	m_sigma_dl(0.01),
 	m_mu_dp(0.),
@@ -90,6 +90,31 @@ ostream&
 operator<<(ostream& os, const IonSource& ionSource)
 {
 	return os << ionSource.toLine();
+}
+
+
+
+IonSource&
+IonSource::operator=(const IonSource& ion_source)
+{
+	m_mass_number = ion_source.m_mass_number;
+	m_proton_number = ion_source.m_proton_number;
+	m_charge = ion_source.m_charge;
+	m_energy = ion_source.m_energy;
+	m_mu_x = ion_source.m_mu_x;
+	m_sigma_x = ion_source.m_sigma_x;
+	m_mu_dx = ion_source.m_mu_dx;
+	m_sigma_dx = ion_source.m_sigma_dx;
+	m_mu_y = ion_source.m_mu_y;
+	m_sigma_y = ion_source.m_sigma_y;
+	m_mu_dy = ion_source.m_mu_dy;
+	m_sigma_dy = ion_source.m_sigma_dy;
+	m_mu_dl = ion_source.m_mu_dl;
+	m_sigma_dl = ion_source.m_sigma_dl;
+	m_mu_dp = ion_source.m_mu_dp;
+	m_sigma_dp = ion_source.m_sigma_dp;
+	m_first_device = ion_source.m_first_device;
+	return *this;
 }
 
 

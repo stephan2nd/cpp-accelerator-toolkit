@@ -34,6 +34,9 @@ public:
 	
 	friend ostream&
 	operator<<(ostream& os, const IonSource& ionSource);
+	
+	IonSource&
+	operator=(const IonSource& ion_source);
 
 	void
 	appendDevice(Device* device);
