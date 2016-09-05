@@ -156,6 +156,12 @@ Accelerator::setScreenIgnore(bool ignore)
 
 
 
+void
+Accelerator::setIonSource(const IonSource& ion_source)
+{
+	m_ion_source = ion_source;
+}
+
 
 
 

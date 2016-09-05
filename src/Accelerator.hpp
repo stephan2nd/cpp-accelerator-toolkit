@@ -51,6 +51,9 @@ public:
 	
 	void
 	setScreenIgnore(bool ignore);
+	
+	void
+	setIonSource(const IonSource& ion_source);
 
 private:
 

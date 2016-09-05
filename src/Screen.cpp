@@ -44,7 +44,7 @@ Screen::toString(unsigned int indent) const
 	unsigned int x_factor = cells_hor / 50;	
 	unsigned int y_factor = cells_hor / 25;	
 	
-	for( unsigned int y=0; y<cells_ver; y+=y_factor ){
+/*	for( unsigned int y=0; y<cells_ver; y+=y_factor ){
 		ss << indention << "\t|";
 		for( unsigned int x=0; x<cells_hor; x+=x_factor ){
 			unsigned int sum = 0;
@@ -56,7 +56,7 @@ Screen::toString(unsigned int indent) const
 			ss << asciiRepresentation(sum, x_factor, y_factor);
 		}
 		ss << "|\n";
-	}
+	}*/
 	ss << indention << "}";	   
 	return ss.str();
 }
@@ -163,7 +163,7 @@ Screen::fillHistogram(double x, double y)
 		}
 	} else {
 		m_missed += 1;
-	}
+	}	
 }
 
 
