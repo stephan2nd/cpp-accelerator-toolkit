@@ -30,7 +30,9 @@ RectangularDipoleMagnet::toString(unsigned int indent) const
 	   << "width = " << m_width << " m, "
 	   << "height = " << m_height << " m, "
 	   << "length = " << m_length << " m, "
-	   << "angle = " << m_angle  
+	   << "angle = " << m_angle << " rad, "
+	   << "angle = " << (m_angle*180/M_PI) << " °, "
+	   << "bending_radius = " << (m_length/m_angle) << " m"
 	   << ")";
 	return ss.str();
 }
