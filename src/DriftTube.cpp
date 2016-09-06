@@ -53,8 +53,8 @@ operator<<(ostream& os, const DriftTube& driftTube)
 void
 DriftTube::transport(Ion& ion)
 {
-	ion.setX( m_length * ion.dx() );
-	ion.setY( m_length * ion.dy() );	
+	ion.setX( ion.x() + m_length * ion.dx() );
+	ion.setY( ion.y() + m_length * ion.dy() );	
 	
 	if( not isParticleLost(ion) ){
 		if( m_next != NULL ){
