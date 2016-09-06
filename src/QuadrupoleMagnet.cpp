@@ -92,8 +92,8 @@ QuadrupoleMagnet::transport(Ion& ion)
 		ion.setY( y );
 		ion.setDy( dy );
 	} else {
-		ion.setX( m_length * ion.dx() );
-		ion.setY( m_length * ion.dy() );	
+		ion.setX( ion.x() + m_length * ion.dx() );
+		ion.setY( ion.y() + m_length * ion.dy() );	
 	}
 	
 	if( not isParticleLost(ion) ){
