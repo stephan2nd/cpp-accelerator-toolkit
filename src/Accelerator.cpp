@@ -1,6 +1,7 @@
 #include "Accelerator.hpp"
 
 #include <sstream>
+#include <fstream>
 #include <exception>
 
 
@@ -114,6 +115,22 @@ Accelerator::startSimulation(unsigned int nof_ions, bool threaded, unsigned int 
 	} else {
 		m_ion_source.run(nof_ions);
 	}	
+}
+
+
+
+void
+Accelerator::writeMirkoMakro(const string& filename) const
+{
+	ofstream outfile;
+	outfile.open(filename, ios::out | ios::trunc );
+
+	for( auto it=m_devices.begin(); it<m_devices.end(); it++ ){
+		outfile << (*it)->mirkoMakroString();
+	}
+
+	outfile.close();
+
 }
 
 

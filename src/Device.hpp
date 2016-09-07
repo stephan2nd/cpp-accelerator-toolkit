@@ -42,6 +42,9 @@ public:
 	
 	virtual int
 	settingSize(void) { return 0; };
+
+	virtual string
+	mirkoMakroString(void) const;
 	
 	virtual void setNormValue(double norm_value) { };
 	

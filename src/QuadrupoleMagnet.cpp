@@ -111,6 +111,16 @@ QuadrupoleMagnet::reset(void)
 
 
 
+string
+QuadrupoleMagnet::mirkoMakroString(void) const
+{
+	stringstream ss;
+	ss << "kele, \'" << m_name << "\', 5, " <<  (m_strength/abs(m_strength))*sqrt(abs(m_strength))/1000. << ", *\n";
+	return ss.str();
+}
+
+
+
 void 
 QuadrupoleMagnet::setMinStrength(double min_strength)
 {

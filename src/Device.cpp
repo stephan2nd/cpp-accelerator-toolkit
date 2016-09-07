@@ -52,5 +52,11 @@ Device::isParticleLost(const Ion& ion) const
 
 
 
+string
+Device::mirkoMakroString(void) const
+{
+	return "";
+}
+
 
 

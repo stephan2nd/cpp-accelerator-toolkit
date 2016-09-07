@@ -41,6 +41,9 @@ public:
 	virtual int
 	settingSize(void) { return 1; };
 
+	virtual string
+	mirkoMakroString(void) const;
+
 	void 
 	setMinStrength(double min_strength);
 	

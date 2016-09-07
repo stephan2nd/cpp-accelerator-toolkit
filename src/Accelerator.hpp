@@ -42,6 +42,9 @@ public:
 	
 	void
 	startSimulation(unsigned int nof_ions, bool threaded=true, unsigned int nof_threads=max((unsigned int)1,thread::hardware_concurrency()));
+
+	void
+	writeMirkoMakro(const string& filename) const;
 	
 	void
 	setNormValues(vector<double> values);
