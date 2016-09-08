@@ -114,6 +114,7 @@ Screen::exportHistogram(const string& filename) const
 	unsigned int x = 0;
 	unsigned int y = 0;
 	
+	outfile << "hist2d" << "\n";
 	outfile << dots_hor << "\n";
 	outfile << dots_ver << "\n";	
 	
