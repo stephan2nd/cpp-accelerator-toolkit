@@ -14,7 +14,12 @@ class Device
 {
 public:
 
-	Device(const string& class_name, const string& name, double width, double height, double length=0.);
+	static const int SHAPE_ELLIPSE = 1;
+	static const int SHAPE_RECT    = 2;
+
+	Device(const string& class_name, const string& name, double width, double height, double length = 0., int shape = SHAPE_ELLIPSE);
+	
+	Device(const string& class_name, const string& name, double left_width, double right_width, double upper_width, double lower_width, double length = 0., int shape = SHAPE_ELLIPSE);
 
 	virtual
 	~Device();
@@ -68,7 +73,17 @@ protected:
 
 	double m_height;
 	
+	double m_left_width;
+	
+	double m_right_width;
+	
+	double m_upper_width;
+	
+	double m_lower_width;
+	
 	double m_length;
+	
+	int m_shape;
 	
 	bool m_ignore;
 	
