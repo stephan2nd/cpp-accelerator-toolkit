@@ -36,6 +36,9 @@ public:
 	void
 	reset(void);
 	
+	string
+	mirkoMixString(void) const;
+	
 private:
 	
 };

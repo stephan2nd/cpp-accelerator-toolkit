@@ -5,10 +5,13 @@
 
 
 
-ProfileGrid::ProfileGrid(const string& name, double width, double height, unsigned int  nof_wires) :
+ProfileGrid::ProfileGrid(const string& name, double width, double height, unsigned int nof_wires) :
 	Device("ProfileGrid", name, width, height, 0),
 	m_wires_hor(nof_wires),
-	m_wires_ver(nof_wires)
+	m_wires_ver(nof_wires),
+	m_counts(0),
+	m_centerX(0.),
+	m_centerY(0.)
 { }
 
 
@@ -30,9 +33,12 @@ ProfileGrid::toString(unsigned int indent) const
 	ss << indention << toLine() << " ("
 	   << "width = " << m_width << " m, "
 	   << "height = " << m_height << " m, "
+	   << "counts = " << m_counts << ", "
+	   << "centerX = " << centerX() << " m, "
+	   << "centerY = " << centerY() << " m"
 	   << ") {\n";
 
-	ss << indention << "\t";
+/*	ss << indention << "\t";
 	for( unsigned int x=0; x<m_wires_hor.size(); x++ ){
 		ss << m_wires_hor[x] << " ";
 	}	   
@@ -42,7 +48,7 @@ ProfileGrid::toString(unsigned int indent) const
 	for( unsigned int y=0; y<m_wires_ver.size(); y++ ){
 		ss << m_wires_ver[y] << " ";
 	}	   
-	ss << "\n";
+	ss << "\n";*/
 	
 	ss << indention << "}";	   	   
 	return ss.str();
@@ -82,6 +88,9 @@ ProfileGrid::reset(void)
 { 
 	fill(m_wires_hor.begin(), m_wires_hor.end(), 0);
 	fill(m_wires_ver.begin(), m_wires_ver.end(), 0);
+	m_counts = 0;
+	m_centerX = 0.;
+	m_centerY = 0.;
 }
 
 
@@ -93,6 +102,10 @@ ProfileGrid::fillHistograms(double x, double y)
 	double half_height = 0.5 * m_height;	
 	unsigned int cells_hor = m_wires_hor.size();
 	unsigned int cells_ver = m_wires_ver.size();
+	
+	m_centerX = m_centerX + x;
+	m_centerY = m_centerY + y;
+	m_counts++;
 				
 	if( x < half_width and x > -half_width ){
 		unsigned int pos = floor((x*cells_hor/m_width) + 0.5*cells_hor);		
@@ -104,6 +117,36 @@ ProfileGrid::fillHistograms(double x, double y)
 		m_wires_ver[pos] += 1;
 	}
 }
+
+
+
+double 
+ProfileGrid::centerX(void) const
+{
+	if( m_counts == 0 ){
+		return 10000; // FIXME
+	} else {
+		return (m_centerX / m_counts);
+	}
+}
+
+
+	
+double
+ProfileGrid::centerY(void) const
+{
+	if( m_counts == 0 ){
+		return 10000; // FIXME
+	} else {
+		return (m_centerY / m_counts);
+	}
+}
+
+
+
+
+
+
 
 
 

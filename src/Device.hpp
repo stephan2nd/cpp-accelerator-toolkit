@@ -48,6 +48,9 @@ public:
 	virtual int
 	settingSize(void) { return 0; };
 
+//	virtual string
+//	mirkoMixString(void) const = 0;
+
 	virtual string
 	mirkoMakroString(void) const;
 	

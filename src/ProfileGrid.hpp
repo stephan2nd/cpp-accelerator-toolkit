@@ -38,6 +38,12 @@ public:
 	void
 	reset(void);
 	
+	double 
+	centerX(void) const;
+	
+	double
+	centerY(void) const;
+	
 private:
 
 	void
@@ -46,6 +52,12 @@ private:
 	vector<atomic<unsigned int>> m_wires_hor;
 	
 	vector<atomic<unsigned int>> m_wires_ver;
+	
+	atomic<unsigned int> m_counts;	
+	
+	atomic<double> m_centerX;
+	
+	atomic<double> m_centerY;
 };
 
 #endif /* PROFILE_GRID_HPP_ */
