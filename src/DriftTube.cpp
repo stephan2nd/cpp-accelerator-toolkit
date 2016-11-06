@@ -72,9 +72,10 @@ DriftTube::reset(void)
 
 
 string
-DriftTube::mirkoMixString(void) const = 0;
+DriftTube::mirkoMixString(void) const
+{
 	stringstream ss;
-	ss << "   " << m_name << "   0   2   1   " <<  (1000*m_length) << "   " << (1000*m_width) << "   " << (1000*m_height) << "   0\n";
+	ss << "   " << m_name << "   0   2   1   " <<  (1000*m_length) << "   " << (1000*m_width) << "   " << (1000*m_height) << "   0i\n";
 	return ss.str();
 }
 
