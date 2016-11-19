@@ -33,6 +33,9 @@ public:
 	
 	friend ostream&
 	operator<<(ostream& os, const Accelerator& accelerator);
+
+	void
+	appendDevicesFromMirkoFile(const string& mirko_filename);
 	
 	void
 	appendDevice(Device* device);

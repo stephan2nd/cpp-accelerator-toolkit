@@ -18,7 +18,7 @@ friend unsigned int test_bunch(bool verbose);
 
 public:
 
-	Bunch(unsigned int nof_particles);
+	Bunch(unsigned int nof_macro_particles, unsigned int bunch_current, double rf_frequency);
 
 	virtual
 	~Bunch();

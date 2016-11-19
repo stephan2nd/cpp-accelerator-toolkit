@@ -1,4 +1,5 @@
 #include "Accelerator.hpp"
+#include "MirkoInterface.hpp"
 
 #include <sstream>
 #include <fstream>
@@ -58,6 +59,20 @@ ostream&
 operator<<(ostream& os, const Accelerator& accelerator)
 {
 	return os << accelerator.toLine();
+}
+
+
+
+void
+Accelerator::appendDevicesFromMirkoFile(const string& mirko_filename)
+{
+	MirkoInterface mp;
+	mp.readMixFile(mirko_filename);
+	vector<Device*> devices = mp.getDevices();
+
+	for( auto it_device=devices.begin(); it_device<devices.end(); it_device++ ){
+		appendDevice(*it_device);
+	}
 }
 
 
